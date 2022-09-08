@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch IsPalindrome",
+            "request": "launch",
+            "mainClass": "leetCodeString.IsPalindrome",
+            "projectName": "LeetCode_b82c553a"
+        },
+        {
+            "type": "java",
             "name": "Launch MaximumProduct",
             "request": "launch",
             "mainClass": "leetCodeBacktracking.MaximumProduct"

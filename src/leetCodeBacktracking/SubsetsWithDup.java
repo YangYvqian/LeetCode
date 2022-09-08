@@ -42,6 +42,6 @@ public class SubsetsWithDup {
     public static void main(String[] args) {
         int[] nums = {1,2,2};
 
-        // subsetsWithDup(nums);
+        subsetsWithDup(nums);
     }
 }

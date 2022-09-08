@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.stream.IntStream;
 
 public class Makesquare {
-    public static boolean makesquare(int[] matchsticks) {
+    public boolean makesquare(int[] matchsticks) {
 
         IntStream arr = Arrays.stream(matchsticks);
         int sum = arr.sum();
@@ -15,26 +15,47 @@ public class Makesquare {
         }else{
             return false;
         }
-        int subsum = 0;
         Arrays.sort(matchsticks);
-        for(int i=0;i<matchsticks.length;i++){
-            if(subsum!=flag && subsum<flag){
-                subsum = subsum+matchsticks[i];
-                continue;
-            }else if(subsum==flag){
-                subsum = 0;
-                continue;
-            }if(subsum>flag){
-                return false;
+        
+        // 降序排列
+        int left = 0;
+        int right = matchsticks.length-1;
+        while(left<right){
+            int temp = matchsticks[left];
+            matchsticks[left] = matchsticks[right];
+            matchsticks[right] = temp;
+            left++;
+            right--;
+        }
+        
+        // 回溯遍历，直到找到一个解
+        // 初始化一个数组，每个数代表每个边的大小
+        int[] edge = new int[4];
+        
+
+        return dfs(matchsticks,0,flag,edge);
+    }
+
+    public boolean dfs(int[] matchsticks,int i,int flag,int[] edge){
+        if(i==matchsticks.length){
+            return true;
+        }else if(i < matchsticks.length){
+            for(int j = 0; j < edge.length; j++){
+                edge[j] += matchsticks[i];
+                if(edge[j] <= flag && dfs(matchsticks, i+1, flag, edge)){
+                    return true;
+                }
+                edge[j] -= matchsticks[i];
             }
         }
 
-        return true;
+        return false;
     }
 
     public static void main(String[] args) {
-        int[] arr = {10,6,5,5,5,3,3,3,2,2,2,2};
-        boolean res = makesquare(arr);
-        System.out.println(res);
+        int[] arr = {2,2,2,10,6,5,5,5,3,3,3,2};
+        Makesquare res = new Makesquare();
+        System.out.println(res.makesquare(arr) );
+        
     }
 }
