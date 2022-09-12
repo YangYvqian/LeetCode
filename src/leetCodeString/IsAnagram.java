@@ -1,5 +1,6 @@
 package leetCodeString;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,6 +21,18 @@ import java.util.Map;
  */
 
 public class IsAnagram {
+    public boolean isAnagram2(String s, String t) {
+        if(s.length() > t.length()){
+            return false;
+        }
+
+        Arrays.sort(s.toCharArray());
+        Arrays.sort(t.toCharArray());
+        if(s == t) return true;
+        
+        return false;
+    }
+
     public boolean isAnagram(String s, String t) {
         if(s.length() > t.length()){
             return false;
@@ -49,7 +62,7 @@ public class IsAnagram {
         String s = "aacc";
         String t = "ccac";
         IsAnagram res = new IsAnagram();
-        System.out.println(res.isAnagram(s, t));
+        System.out.println(res.isAnagram2(s, t));
     }
     
 }
