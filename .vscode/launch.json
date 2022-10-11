@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch ReverseStr",
+            "request": "launch",
+            "mainClass": "leetCodeString.ReverseStr",
+            "projectName": "LeetCode_b82c553a"
+        },
+        {
+            "type": "java",
             "name": "Launch IsPalindrome",
             "request": "launch",
             "mainClass": "leetCodeString.IsPalindrome",
